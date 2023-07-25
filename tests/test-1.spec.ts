@@ -15,7 +15,7 @@ test('Verify Support page has correct Driver Display image and Text', async ({ p
   await page.getByText('The driver display contains gauges, driver support functions, and indicator and ').click();
   await page.getByRole('button', { name: 'P5-22w26-iCup-Driver display ICE/MHEV' }).scrollIntoViewIfNeeded();
 
-  //Image comparison and Text Comparison
+  //Image comparison and Text Comparisons
   await expect(page.getByRole('button', { name: 'P5-22w26-iCup-Driver display ICE/MHEV' })).toHaveScreenshot("DriverDisplay.png");
   await expect(page.locator('p').filter({ hasText: 'The driver display contains gauges, driver support functions, and indicator and ' })).toBeTruthy;
 });
