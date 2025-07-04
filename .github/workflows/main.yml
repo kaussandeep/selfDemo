@@ -1,0 +1,14 @@
+# .github/workflows/pr-stats.yml
+name: PR Stats
+on:
+  workflow_dispatch: # Specify the event that triggers the action
+  # https://docs.github.com/ko/actions/using-workflows/events-that-trigger-workflows
+jobs:
+  pr-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Stats
+        uses: "naver/pr-stats@v1.0.0" # Path to the action and the version to use
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Be sure to check the documentation for 'with'.
