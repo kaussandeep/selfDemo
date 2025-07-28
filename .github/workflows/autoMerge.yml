@@ -1,4 +1,4 @@
-name: Auto-Merge main2 → main
+name: Auto-Merge main2 → main3
 
 on:
   push:
@@ -25,11 +25,11 @@ jobs:
         run: |
           git fetch origin main:main
 
-      - name: Merge main2 into main
+      - name: Merge main2 into main3
         run: |
-          git checkout main
+          git checkout main3
           git merge origin/main2 --no-edit
 
       - name: Push to main
         run: |
-          git push origin main
+          git push origin main3
