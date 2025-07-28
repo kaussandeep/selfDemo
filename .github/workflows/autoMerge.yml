@@ -1,0 +1,35 @@
+name: Auto-Merge main2 → main
+
+on:
+  push:
+    branches:
+      - main2
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main2
+          fetch-depth: 0  # Required for full merge capability
+
+      - name: Set up Git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch all branches
+        run: |
+          git fetch origin main:main
+
+      - name: Merge main2 into main
+        run: |
+          git checkout main
+          git merge origin/main2 --no-edit
+
+      - name: Push to main
+        run: |
+          git push origin main
